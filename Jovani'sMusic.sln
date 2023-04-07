@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jovani'sMusic.ConsoleApp", "Jovani'sMusic.ConsoleApp\Jovani'sMusic.ConsoleApp.csproj", "{A676BE94-9E31-4C9D-BBA0-0A38C0C3D923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JovanisMusic.API", "JovanisMusic.API\JovanisMusic.API.csproj", "{887A29B2-661B-43DF-BF71-C238F255F58E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JovanisMusic.Application", "JovanisMusic.Application\JovanisMusic.Application.csproj", "{3941B7FA-CA04-4367-88D9-FC13E4E1FAC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JovanisMusic.Domain", "JovanisMusic.Domain\JovanisMusic.Domain.csproj", "{0B139977-C4AD-47F4-B104-DA6B6C00B4ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A676BE94-9E31-4C9D-BBA0-0A38C0C3D923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A676BE94-9E31-4C9D-BBA0-0A38C0C3D923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A676BE94-9E31-4C9D-BBA0-0A38C0C3D923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A676BE94-9E31-4C9D-BBA0-0A38C0C3D923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887A29B2-661B-43DF-BF71-C238F255F58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887A29B2-661B-43DF-BF71-C238F255F58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887A29B2-661B-43DF-BF71-C238F255F58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887A29B2-661B-43DF-BF71-C238F255F58E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3941B7FA-CA04-4367-88D9-FC13E4E1FAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3941B7FA-CA04-4367-88D9-FC13E4E1FAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3941B7FA-CA04-4367-88D9-FC13E4E1FAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3941B7FA-CA04-4367-88D9-FC13E4E1FAC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B139977-C4AD-47F4-B104-DA6B6C00B4ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B139977-C4AD-47F4-B104-DA6B6C00B4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B139977-C4AD-47F4-B104-DA6B6C00B4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B139977-C4AD-47F4-B104-DA6B6C00B4ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6013949-FD9A-48F1-8F13-EA95AD89DF75}
+	EndGlobalSection
+EndGlobal
