@@ -1,31 +1,37 @@
 ﻿using Jovani_sMusic.Application;
-using JovanisMusic.Domain;
-using Newtonsoft.Json;
-using System.Net.Http.Json;
+using YoutubeExplode;
 
 namespace JovanisMusic.API
 {
     public class SearchServices
     {
         public const string ApiKey = "AIzaSyCT1pHxyi5cFWQ1XoFVGLKQZ1BiqdXvkfc";
+        public YoutubeClient YoutubeClient;
+        public DownloadServices DownloadServices;
 
-        public static async Task<ResultList> SearchQuery(string query)
+        public SearchServices(YoutubeClient youtubeClient, DownloadServices downloadServices)
         {
-            var httpClient = new HttpClient();
-
-            var response = await httpClient.GetAsync($"https://youtube.googleapis.com/youtube/v3/search?q={query}&key={ApiKey}").Result.Content.ReadAsStringAsync();
-
-            ResultList results = JsonConvert.DeserializeObject<ResultList>(response);
-
-            return results;
+            YoutubeClient = youtubeClient;
+            DownloadServices = downloadServices;
         }
 
-        public static Task<string> GetFirstResult(string query)
+        public async Task GetSongs(List<string> songs)
         {
-            var results = SearchQuery(query).Result;
-            DownloadServices.DownloadFromLink(results.Videos[0].Id.VideoId);
+            foreach (var song in songs)
+            {
+                var video = await ReturnFirstVideo(song);
+                await DownloadServices.DownloadFromLink(video.url, video.title);
+            }
+        }
 
-            return Task.FromResult("completed!!");
+        public async Task<(string url, string title)> ReturnFirstVideo(string query)
+        {
+            await foreach (var video in YoutubeClient.Search.GetResultsAsync(query))
+            {
+                return (video.Url, video.Title);
+            };
+
+            throw new Exception("ESSE VIDEO NAO EXISTE MAN!!");
         }
     }
 }

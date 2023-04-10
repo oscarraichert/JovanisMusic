@@ -1,3 +1,6 @@
+using Jovani_sMusic.Application;
+using YoutubeExplode;
+
 namespace JovanisMusic.API
 {
     public class Program
@@ -12,6 +15,9 @@ namespace JovanisMusic.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddTransient<SearchServices>();
+            builder.Services.AddTransient<YoutubeClient>();
+            builder.Services.AddTransient<DownloadServices>();
 
             var app = builder.Build();
 
@@ -24,9 +30,9 @@ namespace JovanisMusic.API
 
             app.UseAuthorization();
 
-            app.MapGet("/downloadsongs", async (HttpContext httpContext, string query) =>
+            app.MapPost("/downloadsongs", async (SearchServices searchServices, List<string> songs) =>
             {
-                return await SearchServices.GetFirstResult(query);
+                await searchServices.GetSongs(songs);
             })
             .WithName("DownloadSongs");
 

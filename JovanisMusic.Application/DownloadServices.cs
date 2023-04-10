@@ -1,6 +1,5 @@
-﻿using FFmpeg.NET;
-using System.Text;
-using VideoLibrary;
+﻿using YoutubeExplode;
+using YoutubeExplode.Converter;
 
 namespace Jovani_sMusic.Application
 {
@@ -8,25 +7,16 @@ namespace Jovani_sMusic.Application
     {
         public const string Directory = @"C:\YoutubeVideos\";
         public const string YoutubeUrl = "https://youtube.com/watch?v=";
+        public YoutubeClient YoutubeClient;
 
-        public static void DownloadFromLink(string videoId)
+        public DownloadServices(YoutubeClient youtubeClient)
         {
-            var youtube = YouTube.Default;
-            var video = youtube.GetVideo(YoutubeUrl + videoId);
-            File.WriteAllBytes(Directory + video.FullName, video.GetBytes());
-
-            ConvertToAudio(video);
+            YoutubeClient = youtubeClient;
         }
 
-        public static void ConvertToAudio(YouTubeVideo video)
+        public async Task DownloadFromLink(string url, string title)
         {
-            var inputFile = new InputFile(Directory + video.FullName);
-            var outputFile = new OutputFile($"{Directory + video.FullName.Replace(".mp4", "")}.mp3");
-
-            var engine = new Engine("C:\\ProgramData\\chocolatey\\bin\\ffmpeg.exe");
-
-            engine.ConvertAsync(inputFile, outputFile, default).Wait();
-            File.Delete(inputFile.Name);
+            await YoutubeClient.Videos.DownloadAsync(url, $"{Directory + title}.mp3");
         }
     }
 }

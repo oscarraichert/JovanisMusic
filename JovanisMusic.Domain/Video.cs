@@ -4,7 +4,10 @@ namespace JovanisMusic.Domain
 {
     public class Video
     {
-        [JsonProperty("id")]
-        public Id Id { get; set; }
+        [JsonProperty("Title")]
+        public string Title { get; set; }
+
+        [JsonProperty("Url")]
+        public string Url { get; set; }
     }
 }
